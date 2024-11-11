@@ -8,16 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Prescription extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'PatientID',
-        'StaffID',
-        'PrescriptionDate',
-        'MedicationID',
-        'Quantity'
-    ];
+    protected $guarded = [];
 
-    public function medication()
-{
-    return $this->belongsTo('App\Models\Medication', 'MedicationID');
-}
+    public function doctor()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
